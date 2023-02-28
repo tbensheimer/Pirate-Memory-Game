@@ -8,6 +8,60 @@
   color: white;
 }
 
+.card {
+  position: relative;
+  width: 150px;
+  margin: 10px;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 800px;
+}
+
+.card .front {
+  transform: rotateY(90deg);
+  position: absolute;
+  transition: all ease-in 0.2s;
+}
+
+.flipped .front {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+.card .back {
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+
+.flipped .back {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}
+
+.back {
+  width: 100%;
+}
+
+.front {
+  width: 100%;
+}
+
+.btn {
+  border-radius: 20px;
+  color:darkcyan;
+  font-size: 1.5rem;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
 h3 {
   margin: 0;
 }
