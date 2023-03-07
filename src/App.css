@@ -17,6 +17,7 @@
 .card-grid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   width: 800px;
 }
 
@@ -64,4 +65,15 @@
 
 h3 {
   margin: 0;
+}
+
+.victory {
+  position: absolute;
+  top: 40%;
+  background-color: whitesmoke;
+  color:black;
+  padding: 50px;
+  z-index: 5;
+  border-radius: 20px;
+  font-size: 2rem;
 }
