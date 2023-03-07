@@ -1,3 +1,4 @@
+import './App.css';
 import { useEffect, useState } from 'react';
 import Card from "./components/Card";
 import skull from "./images/skull.jpg"
@@ -22,6 +23,7 @@ function App() {
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
+  const [win, setWin] = useState(false);
 
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
@@ -33,6 +35,7 @@ function App() {
 
     setCards(shuffledCards);
     setTurns(0);
+    setWin(false);
   }
 
   const handleChoice = (card) => {
@@ -67,6 +70,14 @@ function App() {
         setTimeout(() => resetTurn(), 1000);
       }
     }
+
+    cards.forEach(card => {
+      if(!card.matched) {
+        return setWin(false);
+      }
+      return setWin(true);
+    })
+
   }, [choiceOne, choiceTwo]);
 
   useEffect(() => {
@@ -78,7 +89,9 @@ function App() {
   <h1>Pirate Memory Game</h1>
   <h3>Turns: {turns}</h3>
   <div className="card-grid">
-    
+  {win == true && <div class="victory">You won! It took you {turns} turns to complete the game. Would you like to retry for a better score?</div>}
+
+
     {cards.map(card => {
      return <Card flipped={card === choiceOne || card === choiceTwo || card.matched} 
       handleChoice={handleChoice} 
@@ -90,9 +103,7 @@ function App() {
   </div>
   <button onClick={shuffleCards} type="button" className="btn">New Game</button>
 </div>
-
   );
 }
 
 export default App;
-
